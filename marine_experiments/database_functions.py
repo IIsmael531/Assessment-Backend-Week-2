@@ -3,7 +3,6 @@
 from psycopg2 import connect
 from psycopg2.extras import RealDictCursor
 from psycopg2.extensions import connection, cursor
-from psycopg2 import sql
 
 
 def get_db_connection(dbname,
