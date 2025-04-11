@@ -3,20 +3,25 @@ platform linux -- Python 3.12.9, pytest-8.3.5, pluggy-1.5.0
 rootdir: /home/runner/work/Assessment-Backend-Week-2/Assessment-Backend-Week-2/marine_experiments
 collected 100 items
 
-test_api.py F.FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF.FF [ 60%]
+test_api.py ..................FFFFFFFFFFFFFFF.FFFFFFFFFFFFFFFFFFFFFFFFFF [ 60%]
 FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF                                 [100%]
 
-======================== 98 failed, 2 passed in 10.37s =========================
+======================== 81 failed, 19 passed in 10.52s ========================
 ************* Module api
-marine_experiments/api.py:37:0: C0301: Line too long (150/100) (line-too-long)
+marine_experiments/api.py:53:0: C0301: Line too long (130/100) (line-too-long)
 marine_experiments/api.py:3:0: W0611: Unused datetime imported from datetime (unused-import)
 marine_experiments/api.py:5:0: W0611: Unused request imported from flask (unused-import)
 marine_experiments/api.py:6:0: W0611: Unused sql imported from psycopg2 (unused-import)
 ************* Module database_functions
-marine_experiments/database_functions.py:21:15: W0621: Redefining name 'conn' from outer scope (line 18) (redefined-outer-name)
-marine_experiments/database_functions.py:28:4: W0621: Redefining name 'cursor' from outer scope (line 5) (redefined-outer-name)
-marine_experiments/database_functions.py:39:11: R1721: Unnecessary use of a comprehension, use list(rows) instead. (unnecessary-comprehension)
+marine_experiments/database_functions.py:44:15: C0303: Trailing whitespace (trailing-whitespace)
+marine_experiments/database_functions.py:18:15: W0621: Redefining name 'conn' from outer scope (line 60) (redefined-outer-name)
+marine_experiments/database_functions.py:23:16: W0621: Redefining name 'conn' from outer scope (line 60) (redefined-outer-name)
+marine_experiments/database_functions.py:25:4: W0621: Redefining name 'cursor' from outer scope (line 5) (redefined-outer-name)
+marine_experiments/database_functions.py:37:11: R1721: Unnecessary use of a comprehension, use list(rows) instead. (unnecessary-comprehension)
+marine_experiments/database_functions.py:40:19: W0621: Redefining name 'conn' from outer scope (line 60) (redefined-outer-name)
+marine_experiments/database_functions.py:42:4: W0621: Redefining name 'cursor' from outer scope (line 5) (redefined-outer-name)
+marine_experiments/database_functions.py:56:11: R1721: Unnecessary use of a comprehension, use list(rows) instead. (unnecessary-comprehension)
 
 ------------------------------------------------------------------
-Your code has been rated at 7.88/10 (previous run: 7.88/10, +0.00)
+Your code has been rated at 7.14/10 (previous run: 7.14/10, +0.00)
 
