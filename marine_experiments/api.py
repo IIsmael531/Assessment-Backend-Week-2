@@ -5,7 +5,7 @@ from datetime import datetime
 from flask import Flask, jsonify, request
 from psycopg2 import sql
 
-from database_functions import get_db_connection
+from database_functions import get_db_connection, get_subject
 
 
 app = Flask(__name__)
@@ -26,6 +26,32 @@ def home():
         "resource": "JSON-based API",
         "status": "Classified"
     })
+
+
+@app.get("/subject")
+def endpoint_get_subject():
+    """Returns subject information"""
+    return get_subject()
+
+# Task 1
+# A GET request to the / subject end point should return a list of objects(see example below). Each object should have the following information only:
+
+# Subject ID
+# Subject Name
+# Species Name
+# Date of Birth
+# Dates should be expressed as strings in the YYYY-MM-DD format.
+
+# Objects should be ordered by date of birth in descending order.
+
+
+# tables:
+# experiment
+# psql marine_experiments -c "SELECT * FROM experiment"
+# experiment_type
+# species
+# subject
+#
 
 
 if __name__ == "__main__":
