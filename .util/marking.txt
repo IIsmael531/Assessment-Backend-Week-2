@@ -6,30 +6,21 @@ collected 100 items
 test_api.py ..............................FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF [ 60%]
 FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF                                 [100%]
 
-======================== 70 failed, 30 passed in 12.27s ========================
+======================== 70 failed, 30 passed in 12.08s ========================
 ************* Module api
-marine_experiments/api.py:73:0: C0301: Line too long (136/100) (line-too-long)
 marine_experiments/api.py:14:18: W0622: Redefining built-in 'type' (redefined-builtin)
 marine_experiments/api.py:28:0: W0105: String statement has no effect (pointless-string-statement)
 marine_experiments/api.py:55:4: W0622: Redefining built-in 'type' (redefined-builtin)
 marine_experiments/api.py:3:0: W0611: Unused datetime imported from datetime (unused-import)
 marine_experiments/api.py:6:0: W0611: Unused sql imported from psycopg2 (unused-import)
 ************* Module database_functions
-marine_experiments/database_functions.py:45:15: C0303: Trailing whitespace (trailing-whitespace)
-marine_experiments/database_functions.py:88:20: C0303: Trailing whitespace (trailing-whitespace)
-marine_experiments/database_functions.py:19:15: W0621: Redefining name 'conn' from outer scope (line 85) (redefined-outer-name)
-marine_experiments/database_functions.py:24:16: W0621: Redefining name 'conn' from outer scope (line 85) (redefined-outer-name)
-marine_experiments/database_functions.py:26:4: W0621: Redefining name 'cursor' from outer scope (line 5) (redefined-outer-name)
-marine_experiments/database_functions.py:38:11: R1721: Unnecessary use of a comprehension, use list(rows) instead. (unnecessary-comprehension)
-marine_experiments/database_functions.py:41:19: W0621: Redefining name 'conn' from outer scope (line 85) (redefined-outer-name)
-marine_experiments/database_functions.py:41:25: W0622: Redefining built-in 'type' (redefined-builtin)
-marine_experiments/database_functions.py:43:4: W0621: Redefining name 'cursor' from outer scope (line 5) (redefined-outer-name)
-marine_experiments/database_functions.py:81:11: R1721: Unnecessary use of a comprehension, use list(rows) instead. (unnecessary-comprehension)
-marine_experiments/database_functions.py:86:10: E1120: No value for argument 'type' in function call (no-value-for-parameter)
-marine_experiments/database_functions.py:86:10: E1120: No value for argument 'score_over' in function call (no-value-for-parameter)
-marine_experiments/database_functions.py:88:4: C0103: Constant name "base_query" doesn't conform to UPPER_CASE naming style (invalid-name)
-marine_experiments/database_functions.py:6:0: W0611: Unused sql imported from psycopg2 (unused-import)
+marine_experiments/database_functions.py:44:15: C0303: Trailing whitespace (trailing-whitespace)
+marine_experiments/database_functions.py:25:4: W0621: Redefining name 'cursor' from outer scope (line 5) (redefined-outer-name)
+marine_experiments/database_functions.py:37:11: R1721: Unnecessary use of a comprehension, use list(rows) instead. (unnecessary-comprehension)
+marine_experiments/database_functions.py:40:25: W0622: Redefining built-in 'type' (redefined-builtin)
+marine_experiments/database_functions.py:42:4: W0621: Redefining name 'cursor' from outer scope (line 5) (redefined-outer-name)
+marine_experiments/database_functions.py:80:11: R1721: Unnecessary use of a comprehension, use list(rows) instead. (unnecessary-comprehension)
 
 ------------------------------------------------------------------
-Your code has been rated at 6.16/10 (previous run: 6.16/10, +0.00)
+Your code has been rated at 8.43/10 (previous run: 8.43/10, +0.00)
 
