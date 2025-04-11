@@ -3,6 +3,7 @@
 from psycopg2 import connect
 from psycopg2.extras import RealDictCursor
 from psycopg2.extensions import connection, cursor
+from psycopg2 import sql
 
 
 def get_db_connection(dbname,
@@ -37,7 +38,7 @@ def get_subject(conn) -> list[dict]:
     return [r for r in rows]
 
 
-def get_experiment(conn):
+def get_experiment(conn, type, score_over):
     """Returns all experiment details"""
     cursor = get_cursor(conn)
 
@@ -47,9 +48,29 @@ def get_experiment(conn):
     JOIN subject USING (subject_id)
     JOIN species USING (species_id)
     JOIN experiment_type USING (experiment_type_id)
-    ORDER BY experiment_date DESC"""
+    """
 
-    cursor.execute(query,)
+    filters = []
+    params = []
+
+    if type:
+        filters.append("LOWER(experiment_type_name) = %s")
+        params.append(type.lower())
+
+    if score_over:
+        filters.append("((score::numeric / max_score) * 100) > %s")
+        params.append(int(score_over))
+
+    if filters:
+        query += " WHERE " + " AND ".join(filters)
+
+    query += " ORDER BY experiment_date DESC"
+
+    if params:
+        cursor.execute(query, tuple(params))
+    else:
+        cursor.execute(query)
+
     rows = cursor.fetchall()
     cursor.close()
 
