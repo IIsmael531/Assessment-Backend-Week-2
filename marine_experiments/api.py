@@ -5,7 +5,7 @@ from datetime import datetime
 from flask import Flask, jsonify, request
 from psycopg2 import sql
 
-from database_functions import get_db_connection, get_subject
+from database_functions import get_db_connection, get_subject, get_experiment
 
 
 app = Flask(__name__)
@@ -31,27 +31,40 @@ def home():
 @app.get("/subject")
 def endpoint_get_subject():
     """Returns subject information"""
-    return get_subject()
-
-# Task 1
-# A GET request to the / subject end point should return a list of objects(see example below). Each object should have the following information only:
-
-# Subject ID
-# Subject Name
-# Species Name
-# Date of Birth
-# Dates should be expressed as strings in the YYYY-MM-DD format.
-
-# Objects should be ordered by date of birth in descending order.
+    return get_subject(conn)
 
 
-# tables:
-# experiment
-# psql marine_experiments -c "SELECT * FROM experiment"
-# experiment_type
-# species
-# subject
-#
+@app.get("//experiment")
+def endpoint_get_experiment():
+    """Returns experiment information"""
+    return get_experiment(conn)
+
+
+# A GET request to the / experiment endpoint should return a
+# list of objects(see example below). Each object should contain the following information only:
+
+    # experiment_id
+    # subject_id
+    # Species
+    # experiment_date
+    # experiment_type_name
+    # score
+
+# SELECT experiment_id, subject_id, species_name, TO_CHAR(experiment_date, 'YYYY-MM-DD') AS experiment_date, experiment_type_name,
+# ROUND((score::numeric / max_score) * 100, 2)::TEXT || '%' AS score
+# FROM experiment
+# JOIN subject USING (subject_id)
+# JOIN species USING (species_id)
+# JOIN experiment_type USING (experiment_type_id)
+# ORDER BY experiment_date DESC
+
+    # Score should be expressed as a percentage rounded to 2 d.p.
+    # (e.g. "70.34%"). The percentage score should be calculated based on
+    # the maximum score for that type of experiment.
+
+    # Dates should be expressed as strings in the YYYY-MM-DD format.
+
+    # Experiments should be sorted in descending order by date.
 
 
 if __name__ == "__main__":
