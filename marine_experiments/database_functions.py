@@ -54,7 +54,7 @@ def get_experiment(conn, type, score_over):
     params = []
 
     if type:
-        filters.append("LOWER(experiment_type_name) = %s")
+        filters.append("LOWER(type_name) = %s")
         params.append(type.lower())
 
     if score_over:
@@ -66,11 +66,15 @@ def get_experiment(conn, type, score_over):
 
     query += " ORDER BY experiment_date DESC"
 
+    print(f"Executing query: {query}")
+    print(f"With parameters: {params}")
+
     if params:
         cursor.execute(query, tuple(params))
     else:
         cursor.execute(query)
 
+    # Fetch the results
     rows = cursor.fetchall()
     cursor.close()
 
@@ -80,3 +84,14 @@ def get_experiment(conn, type, score_over):
 if __name__ == "__main__":
     conn = get_db_connection("marine_experiments")
     print(get_experiment(conn))
+
+    base_query = """    
+    SELECT experiment_id, subject_id, species_name AS species, 
+           TO_CHAR(experiment_date, 'YYYY-MM-DD') AS experiment_date, 
+           type_name AS experiment_type, 
+           ROUND((score::numeric / max_score) * 100, 2)::TEXT || '%' AS score
+    FROM experiment
+    JOIN subject USING (subject_id)
+    JOIN species USING (species_id)
+    JOIN experiment_type USING (experiment_type_id)
+    """
