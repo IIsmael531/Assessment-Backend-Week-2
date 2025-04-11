@@ -82,16 +82,4 @@ def get_experiment(conn, type, score_over):
 
 
 if __name__ == "__main__":
-    conn = get_db_connection("marine_experiments")
-    print(get_experiment(conn))
-
-    base_query = """    
-    SELECT experiment_id, subject_id, species_name AS species, 
-           TO_CHAR(experiment_date, 'YYYY-MM-DD') AS experiment_date, 
-           type_name AS experiment_type, 
-           ROUND((score::numeric / max_score) * 100, 2)::TEXT || '%' AS score
-    FROM experiment
-    JOIN subject USING (subject_id)
-    JOIN species USING (species_id)
-    JOIN experiment_type USING (experiment_type_id)
-    """
+    pass
